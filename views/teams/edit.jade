@@ -1,0 +1,20 @@
+h2 Team Form
+div
+    form
+        <form name="team" method="<% if (team) { %>put<% } else { %>post<% } %>"
+            action="/teams <% if (team) { %>/<%= team._id %><% } %>">
+            <div class="row">
+                <label>Name</label>
+                <input type="text" name="name" value="<%= team.name %>">
+            </div>
+            <div class="row controls">
+                <input type="submit" value="Save">
+            </div>
+        </form>
+        <% if (team) {%>
+            <form method="delete" action="/teamss<%= team._id %>">
+                <input type="submit" value="Delete"/>
+            </form>
+        <% } %>
+    </div>
+</div>

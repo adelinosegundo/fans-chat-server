@@ -1,0 +1,15 @@
+h2 Teams
+p View teams or 
+    a(href="edit.html") add 
+    | a team.
+if flash
+    p flash
+ul
+    li
+        span Name
+        span Actions
+    - for(var i=0; i<teams.length; i++) 
+        li
+            span= teams[i]['name']
+            span
+                a(href="/teams/#{teams[i]._id}") Edit
