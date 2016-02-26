@@ -29,12 +29,12 @@ users.post('/login', function(req, res) {
                 var response = {token: token};
                 res.json(response);                 
             });
+        } else {
+            var token = jwt.sign(user, jwtSecret, { expiresIn: 5 });
+            var response = {token: token};
+            res.json(response);
         }
-        //Found user
-
-        var token = jwt.sign(user, jwtSecret, { expiresIn: 5 });
-        var response = {token: token};
-        res.json(response);
+        
     });
 });
 
