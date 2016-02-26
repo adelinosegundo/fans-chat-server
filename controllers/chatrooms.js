@@ -28,7 +28,7 @@ module.exports = function(io) {
         if (addedUser) return;
         // we store the username in the socket session for this client
         socket.username = username;
-        socket.room = room;
+        socket.room = "room";
         console.log("Added user: " + socket.username + ", to room: " + socket.room);
         
         ++numUsers;
