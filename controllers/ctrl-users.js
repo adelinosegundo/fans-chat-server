@@ -20,7 +20,15 @@ users.post('/login', function(req, res) {
             return res.send('500: Internal Server Error', 500);
         }
         if(!user) {
-            return res.end('No such user');
+            var user = Model({
+                username: username,
+                encrypted_password: md5(username)
+            }).save(function(err){
+                if (err) throw err;
+                var token = jwt.sign(user, jwtSecret, { expiresIn: 5 });
+                var response = {token: token};
+                res.json(response);                 
+            });
         }
         //Found user
 
