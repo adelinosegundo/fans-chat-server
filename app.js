@@ -14,7 +14,7 @@ var users = require('./controllers/ctrl-users');
 var matches = require('./controllers/ctrl-matches');
 
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/fans_db');
+mongoose.connect(process.env.MONGOLAB_URI || 'mongodb://localhost/fans_db');
 
 var app = express();
 

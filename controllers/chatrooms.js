@@ -12,6 +12,7 @@ module.exports = function(io) {
     })).on('authenticated', function (socket) {
       console.log('connected & authenticated: ' + socket.decoded_token);
       var addedUser = false;
+      socket.emit('authenticated', {});
       // when the client emits 'new message', this listens and executes
       socket.on('new message', function (data) {
         // we tell the client to execute 'new message'
