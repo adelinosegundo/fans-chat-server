@@ -98,22 +98,24 @@ $(function() {
   // Sets the client's username
   function setUsername () {
     username = cleanInput($usernameInput.val().trim());
-    password = cleanInput($passwordInput.val().trim());
-    room = cleanInput($roomInput.val().trim());
+    // password = cleanInput($passwordInput.val().trim());
+    // room = cleanInput($roomInput.val().trim());
 
     // If the username is valid
-    if (username && room && password || true) {
+    // if (username && room && password || true) {
+    if (username) {
       $loginPage.fadeOut();
       $chatPage.show();
       $loginPage.off('click');
       $currentInput = $inputMessage.focus();
 
-      console.log(username, room, password);
+      // console.log(username, room, password);
       $.post('/users/login', {
         username: username,
-        password: password,
+        // password: password,
       }).done(function (result) {
-        connect_socket(result.token, room);
+        // connect_socket(result.token, room);
+        connect_socket(result.token, "room");
       });
     }
   }
