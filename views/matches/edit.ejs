@@ -1,0 +1,54 @@
+<h2>Match form</h2>
+<p>
+    <% if (match) { %>
+        New match
+    <% } else { %>
+        Edit match
+    <% } %>
+</p>
+<% if (flash) { %>
+    <p>{flash}</p>
+<% } %>
+<div class="content">
+    <div>
+        <form name="match" method="<% if (match) { %>put<% } else { %>post<% } %>"
+            action="/matches <% if (match) { %>/<%= match._id %><% } %>">
+            <div class="row">
+                <label>Due_date</label>
+                <input type="text" name="due_date" value="<%= match.due_date %>">
+            </div>
+            <div class="row">
+                <label>Team_one</label>
+                <input type="text" name="team_one" value="<%= match.team_one %>">
+            </div>
+            <div class="row">
+                <label>Team_one_score</label>
+                <input type="text" name="team_one_score" value="<%= match.team_one_score %>">
+            </div>
+            <div class="row">
+                <label>Team_one_avatar_url</label>
+                <input type="text" name="team_one_avatar_url" value="<%= match.team_one_avatar_url %>">
+            </div>
+            <div class="row">
+                <label>Team_two</label>
+                <input type="text" name="team_two" value="<%= match.team_two %>">
+            </div>
+            <div class="row">
+                <label>Team_two_score</label>
+                <input type="text" name="team_two_score" value="<%= match.team_two_score %>">
+            </div>
+            <div class="row">
+                <label>Team_two_avatar_url</label>
+                <input type="text" name="team_two_avatar_url" value="<%= match.team_two_avatar_url %>">
+            </div>
+            <div class="row controls">
+                <input type="submit" value="Save">
+            </div>
+        </form>
+        <% if (match) {%>
+            <form method="delete" action="/matchess<%= match._id %>">
+                <input type="submit" value="Delete"/>
+            </form>
+        <% } %>
+    </div>
+</div>

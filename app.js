@@ -10,11 +10,11 @@ var bodyParser = require('body-parser');
 var routes = require('./routes/index');
 
 //Controllers
-var teams = require('./controllers/ctrl-teams');
 var users = require('./controllers/ctrl-users');
+var matches = require('./controllers/ctrl-matches');
 
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/admin_server_development');
+mongoose.connect('mongodb://localhost/fans_db');
 
 var app = express();
 
@@ -36,8 +36,8 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
-app.use('/teams', teams);
 app.use('/users', users);
+app.use('/matches', matches);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

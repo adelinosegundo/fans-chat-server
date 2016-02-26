@@ -1,0 +1,31 @@
+<h2>Matches</h2>
+<p>View matches or <a href="edit.html">add</a> a match.</p>
+<% if (locals.flash) { %>
+    <p><%= flash %></p>
+<% } %>
+<ul>
+    <li class="header">
+        <span class="field">Due_date</span>
+        <span class="field">Team_one</span>
+        <span class="field">Team_one_score</span>
+        <span class="field">Team_one_avatar_url</span>
+        <span class="field">Team_two</span>
+        <span class="field">Team_two_score</span>
+        <span class="field">Team_two_avatar_url</span>
+        <span class="field">Actions</span>
+    </li>
+    <% for(var i=0; i<matches.length; i++) {%>
+            <li class="row">
+                <span class="field"><%= matches[i]['due_date'] %></span>
+                <span class="field"><%= matches[i]['team_one'] %></span>
+                <span class="field"><%= matches[i]['team_one_score'] %></span>
+                <span class="field"><%= matches[i]['team_one_avatar_url'] %></span>
+                <span class="field"><%= matches[i]['team_two'] %></span>
+                <span class="field"><%= matches[i]['team_two_score'] %></span>
+                <span class="field"><%= matches[i]['team_two_avatar_url'] %></span>
+                <span class="field">
+                    <a href="<%= matches[i]._id %>" >matches</a>
+                </span>
+            </li>
+    <% } %>
+</ul>
