@@ -12,10 +12,9 @@ var jwtSecret = 'xxxx';
 
 
 users.post('/login', function(req, res) {
-    var username = req.params.username;
-    var password = req.params.password;
+    var username = req.body.username;
+    var password = req.body.password;
     var encrypted_password = md5(password);
-    // console.log(encrypted_password);
     Model.findOne({username: username}, function(err, user){
         if(err) {
             return res.send('500: Internal Server Error', 500);
